@@ -1,0 +1,17 @@
+mission3: main.o parser.o graph.o build.o
+	gcc -Wall -Wextra -std=c11 -g -O0 -o mission3 main.o parser.o graph.o build.o
+
+main.o: main.c ../common/make_types.h
+	gcc -Wall -Wextra -std=c11 -g -O0 -c -o main.o main.c
+
+parser.o: ../common/parser.c ../common/make_types.h
+	gcc -Wall -Wextra -std=c11 -g -O0 -c -o parser.o ../common/parser.c
+
+graph.o: ../common/graph.c ../common/make_types.h
+	gcc -Wall -Wextra -std=c11 -g -O0 -c -o graph.o ../common/graph.c
+
+build.o: ../common/build.c ../common/make_types.h
+	gcc -Wall -Wextra -std=c11 -g -O0 -c -o build.o ../common/build.c
+
+clean:
+	rm -f mission3 *.o

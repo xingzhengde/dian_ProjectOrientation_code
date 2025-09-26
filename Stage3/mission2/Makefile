@@ -1,14 +1,14 @@
-# 这个Makefile只是为了方便mission2的编译
-.PHONY:clean run
 CC=gcc
-EXE=mission2
-RM=rm
+CFLAGS=-Wall -Wextra -std=c11 -g -O0
+TARGET=mission2
+SRC=main.c ../common/parser.c ../common/graph.c ../common/build.c
 
-$(EXE):main.o
-	$(CC) -o $@ $^
-main.o:main.c
-	$(CC) -g -O0 -o $@ -c $<
-run: $(EXE)
-	./$(EXE) --mk=../mission1/Makefile app
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $@ $(SRC)
+
 clean:
-	$(RM) $(EXE) main.o
+	rm -f $(TARGET) *.o
+
+.PHONY: all clean
