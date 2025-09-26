@@ -1,0 +1,28 @@
+digraph MakefileDependencies {
+  rankdir=TB;
+  node [shape=box, style=filled];
+
+  "all" [fillcolor=lightblue];
+  "app" [fillcolor=lightblue];
+  "test" [fillcolor=lightblue];
+  "main.o" [fillcolor=lightblue];
+  "utils.o" [fillcolor=lightblue];
+  "main.c" [fillcolor=lightgreen];
+  "common.h" [fillcolor=lightgreen];
+  "utils.c" [fillcolor=lightgreen];
+  "test.o" [fillcolor=lightblue];
+  "test.c" [fillcolor=lightgreen];
+  "clean" [fillcolor=lightblue];
+
+  "all" -> "test";
+  "all" -> "app";
+  "app" -> "utils.o";
+  "app" -> "main.o";
+  "test" -> "utils.o";
+  "test" -> "test.o";
+  "main.o" -> "common.h";
+  "main.o" -> "main.c";
+  "utils.o" -> "common.h";
+  "utils.o" -> "utils.c";
+  "test.o" -> "test.c";
+}
